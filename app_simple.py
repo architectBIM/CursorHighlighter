@@ -10,7 +10,7 @@ class TransparentCircle(QtWidgets.QWidget):
         super().__init__()
         self.initUI()
         self.normal_brush = QtGui.QColor(255, 255, 128, 127)  # Normal state
-        self.flicker_brush = QtGui.QColor(255, 0, 0, 127)  # Flicker state
+        self.flicker_brush = QtGui.QColor(255, 255, 128, 100)  # Flicker state
         self.current_brush = self.normal_brush
         self.diameter = 150  # Circle diameter in pixels
         self.flickering = False
@@ -44,6 +44,7 @@ class TransparentCircle(QtWidgets.QWidget):
         listener.start()
         # Keyboard shortcut listener
         keyboard.add_hotkey('ctrl+q', self.exit_application)
+        # keyboard.add_hotkey('esc', self.exit_application)
 
     def exit_application(self):
         QtWidgets.QApplication.quit()
