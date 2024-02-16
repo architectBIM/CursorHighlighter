@@ -12,8 +12,8 @@ class TransparentCircle(QtWidgets.QWidget):
         super().__init__()
         self.initUI()
         self.opacity = 127  # Starting opacity for the animation
-        self.static_diameter = 150  # Diameter for the static cursor highlight
-        self.dynamic_diameter = 100  # Starting diameter for the animated effect
+        self.static_diameter = 135  # Diameter for the static cursor highlight
+        self.dynamic_diameter = 120  # Starting diameter for the animated effect
         self.growing = False  # Animation state
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.animate)
@@ -28,6 +28,7 @@ class TransparentCircle(QtWidgets.QWidget):
 
     def paintEvent(self, event):
         qp = QtGui.QPainter(self)
+        qp.setRenderHint(QtGui.QPainter.Antialiasing)
         mouse_x, mouse_y = pyautogui.position()
 
         # Always draw a static circle for cursor highlighting
@@ -51,9 +52,9 @@ class TransparentCircle(QtWidgets.QWidget):
     def start_animation(self):
         self.growing = True
         self.opacity = 127
-        self.dynamic_diameter = 100  # Reset diameter to start size for the animation
+        self.dynamic_diameter = 120  # Reset diameter to start size for the animation
         self.animation_step = 0
-        self.timer.start(25)  # Start the animation timer
+        self.timer.start(35)  # Start the animation timer
 
     def animate(self):
         self.animation_step -= 1
